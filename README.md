@@ -32,8 +32,8 @@ For the full list, please check the Dockerfile
           - '/var/www/html/vendor/'
           - '/var/www/html/var/'
           - '/var/www/html/node_modules/'
-        links:
-          - database
+      links:
+        - database
     
     database:
       image: mariadb:11.0.3
