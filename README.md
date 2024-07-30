@@ -19,7 +19,7 @@ For the full list, please check the Dockerfile
 
       server:
         build:
-          context: vendor/fabriman/symfony-docker/runtimes/
+          context: ./vendor/fabriman/symfony-docker/runtimes/
           dockerfile: Dockerfile
         command: [ "/usr/bin/supervisord" ]
         restart: on-failure
