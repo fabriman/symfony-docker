@@ -82,7 +82,7 @@ We have provided a shell script to automate the setup process. Follow the steps 
     $ cd /mnt/c/YOUR_PATH_TO_THE_PROJECT
    
    # Run the bootstrap
-    $ bash ./builder/bootstrap.sh
+    $ fm up
     ```
 
 ## Default Settings

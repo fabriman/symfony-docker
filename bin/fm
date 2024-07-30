@@ -15,7 +15,7 @@ elif [ $1 == "make:migrations" ]; then
 elif [ $1 == "cache:clear" ]; then
   docker exec -it $SERVER_CONTAINER php bin/console  c:c
 elif [ $1 == "up" ]; then
-  vendor/fm/symfony-docker/src/bootstrap
+  vendor/fabriman/symfony-docker/runtimes/bootstrap
 else
   echo "No command found for $* ! --help for some hints"
 fi
