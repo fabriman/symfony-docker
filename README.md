@@ -17,35 +17,35 @@ For the full list, please check the Dockerfile
 
     services:
 
-    server:
-      build:
-        context: ../vendor/fm/symfony-docker/runtimes/
-        dockerfile: Dockerfile
-      command: [ "/usr/bin/supervisord" ]
-      restart: on-failure
-      environment:
-        SERVER_NAME: ${SERVER_NAME:-localhost}, php:80
-      ports:
-        - "8001:80"
-      volumes:
-          - '.:/var/www/html'
-          - '/var/www/html/vendor/'
-          - '/var/www/html/var/'
-          - '/var/www/html/node_modules/'
-      links:
-        - database
-    
-    database:
-      image: mariadb:11.0.3
-      restart: on-failure
-      environment:
-        # You should definitely change the password in production
-        MYSQL_ROOT_PASSWORD: rootpsw
-        MYSQL_TCP_PORT: 3301
-      ports:
-        - "3301:3301"
-      expose:
-        - "3301"
+      server:
+        build:
+          context: vendor/fabriman/symfony-docker/runtimes/
+          dockerfile: Dockerfile
+        command: [ "/usr/bin/supervisord" ]
+        restart: on-failure
+        environment:
+          SERVER_NAME: ${SERVER_NAME:-localhost}, php:80
+        ports:
+          - "8001:80"
+        volumes:
+            - '.:/var/www/html'
+            - '/var/www/html/vendor/'
+            - '/var/www/html/var/'
+            - '/var/www/html/node_modules/'
+        links:
+          - database
+      
+      database:
+        image: mariadb:11.0.3
+        restart: on-failure
+        environment:
+          # You should definitely change the password in production
+          MYSQL_ROOT_PASSWORD: rootpsw
+          MYSQL_TCP_PORT: 3301
+        ports:
+          - "3301:3301"
+        expose:
+          - "3301"
 
 ## Prerequisites
 
