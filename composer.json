@@ -8,6 +8,9 @@
             "Fabriman\\SymfonyDocker\\": "src/"
         }
     },
+    "bin": [
+        "bin/fm"
+    ],
     "authors": [
         {
             "name": "Fabrizio Manca",
