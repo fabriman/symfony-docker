@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+source ./.env.local;
+
+PROJECT_NAME=$APP_NAME
+
+echo "Installing docker containers"
+docker compose -p $APP_NAME up --build -d
+
+sleep 5
+DOCKER_COMMAND=$(docker ps | grep $APP_NAME"-server" | awk '{print $1}')
+
+echo "Creating network"
+docker network create $PROJECT_NAME
+docker network connect $PROJECT_NAME $PROJECT_NAME-server-1
+docker network connect $PROJECT_NAME $PROJECT_NAME-database-1
+
+echo "Installing composer dependencies..."
+docker exec -it $DOCKER_COMMAND composer install
+
+echo "Creating local database"
+docker exec -it $DOCKER_COMMAND php bin/console doctrine:database:create
+docker exec -it $DOCKER_COMMAND php bin/console doctrine:schema:create
+
+echo "Creating the test database"
+touch ./database.sqlite
+
+echo "Done"

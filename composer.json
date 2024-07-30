@@ -1,0 +1,23 @@
+{
+    "name": "fabriman/symfony-docker",
+    "description": "Docker environment for Symfony apps",
+    "type": "library",
+    "require": {
+        "doctrine/doctrine-fixtures-bundle": "^3.6",
+        "doctrine/doctrine-bundle": "^2.12",
+        "symfony/framework-bundle": "^7.1"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Fabriman\\SymfonyDocker\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Fabrizio Manca",
+            "email": "fabriziomanca87@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
