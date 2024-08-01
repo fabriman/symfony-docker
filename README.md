@@ -52,8 +52,6 @@ For the full list, please check the Dockerfile
 Before setting up the testing environment, ensure you have the following installed:
 
 - Set APP_NAME environment variable on your `.env.local` file
-- Database host "YOUR_APP_NAME-database-1:3302"
-
 - [Docker](https://www.docker.com/) (for container management)
 - On windows, open cmd and set Ubuntu as default distro of WSL2
 
