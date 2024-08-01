@@ -88,7 +88,7 @@ We have provided a shell script to automate the setup process. Follow the steps 
     $ cd /mnt/c/YOUR_PATH_TO_THE_PROJECT
    
    # Run the bootstrap
-    $ fm up
+    $ fm up:build
     ```
 
 ## Default Settings
