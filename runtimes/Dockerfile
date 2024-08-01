@@ -95,6 +95,7 @@ RUN apt update  \
 
 RUN ln -s /etc/nginx/sites-available/server /etc/nginx/sites-enabled
 
+RUN service ssh start
 RUN service php8.2-fpm start
 
 ADD server.conf /etc/nginx/sites-available/server
