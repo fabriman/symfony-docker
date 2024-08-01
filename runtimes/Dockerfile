@@ -86,14 +86,7 @@ RUN apt update  \
     && printf "; priority=30\nextension=pdo_sqlsrv.so\n" > /etc/php/8.2/fpm/conf.d/30-pdo_sqlsrv.ini \
     && phpenmod -v 8.1 sqlsrv pdo_sqlsrv
 
-VOLUME /symfony/var
-VOLUME /symfony/vendor
-VOLUME /symfony/node_modules
-
 RUN ln -s /etc/nginx/sites-available/server /etc/nginx/sites-enabled
-RUN ln -s /symfony/vendor vendor
-RUN ln -s /symfony/var var
-RUN ln -s /symfony/node_modules node_modules
 
 RUN service php8.2-fpm start
 
