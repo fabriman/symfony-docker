@@ -29,9 +29,9 @@ For the full list, please check the Dockerfile
           - "8001:80"
         volumes:
           - '.:/var/www/html:cached'
-          - "var:/symfony/var"
-          - "vendor:/symfony/vendor"
-          - 'node_modules:/symfony/node_modules'
+          - '/var/www/html/vendor'
+          - '/var/www/html/var'
+          - '/var/www/html/node_modules'
         links:
           - database
       
@@ -48,12 +48,6 @@ For the full list, please check the Dockerfile
           - "3301:3301"
         expose:
           - "3301"
-
-      volumes:
-        dbdata:
-        node_modules:
-        var:
-        vendor:
 
 ## Prerequisites
 
