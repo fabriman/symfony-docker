@@ -9,12 +9,9 @@ elif [ $1 = "npm" ]; then
   docker exec -it $SERVER_CONTAINER npm ${*:2}
 elif [ $1 = "php" ]; then
   docker exec -it $SERVER_CONTAINER php ${*:2}
-elif [ $1 == "make:migrations" ]; then
-  docker exec -it $SERVER_CONTAINER php bin/console  --no-interaction ma:mi  --no-interaction
-  docker exec -it $SERVER_CONTAINER php bin/console  --no-interaction d:m:m --allow-no-migration
-elif [ $1 == "cache:clear" ]; then
-  docker exec -it $SERVER_CONTAINER php bin/console  c:c
-elif [ $1 == "up" ]; then
+elif [ $1 == "symfony" ]; then
+  docker exec -it $SERVER_CONTAINER php bin/console  ${*:2}
+elif [ $1 == "up:build" ]; then
   vendor/fabriman/symfony-docker/runtimes/bootstrap
 else
   echo "No command found for $* ! --help for some hints"

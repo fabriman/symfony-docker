@@ -28,10 +28,10 @@ For the full list, please check the Dockerfile
         ports:
           - "8001:80"
         volumes:
-            - '.:/var/www/html'
-            - '/var/www/html/vendor/'
-            - '/var/www/html/var/'
-            - '/var/www/html/node_modules/'
+          - '.:/var/www/html:cached'
+          - "var:/symfony/var"
+          - "vendor:/symfony/vendor"
+          - 'node_modules:/symfony/node_modules'
         links:
           - database
       
@@ -42,10 +42,18 @@ For the full list, please check the Dockerfile
           # You should definitely change the password in production
           MYSQL_ROOT_PASSWORD: rootpsw
           MYSQL_TCP_PORT: 3301
+        volumes:
+          - "dbdata:/var/lib/mysql"
         ports:
           - "3301:3301"
         expose:
           - "3301"
+
+      volumes:
+        dbdata:
+        node_modules:
+        var:
+        vendor:
 
 ## Prerequisites
 

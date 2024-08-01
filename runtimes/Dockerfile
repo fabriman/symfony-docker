@@ -93,7 +93,7 @@ VOLUME /symfony/node_modules
 RUN ln -s /etc/nginx/sites-available/server /etc/nginx/sites-enabled
 RUN ln -s /symfony/vendor vendor
 RUN ln -s /symfony/var var
-RUN ln -s /symfony/node_modules node_modules/
+RUN ln -s /symfony/node_modules node_modules
 
 RUN service php8.2-fpm start
 
