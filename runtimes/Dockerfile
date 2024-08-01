@@ -86,6 +86,13 @@ RUN apt update  \
     && printf "; priority=30\nextension=pdo_sqlsrv.so\n" > /etc/php/8.2/fpm/conf.d/30-pdo_sqlsrv.ini \
     && phpenmod -v 8.1 sqlsrv pdo_sqlsrv
 
+#SSH
+RUN apt update  \
+    && apt install -y openssh-server \
+    && echo 'root:rootpsw' | chpasswd  \
+    && sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
+    && sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config \
+
 RUN ln -s /etc/nginx/sites-available/server /etc/nginx/sites-enabled
 
 RUN service php8.2-fpm start

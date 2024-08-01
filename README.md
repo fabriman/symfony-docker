@@ -27,6 +27,7 @@ For the full list, please check the Dockerfile
           SERVER_NAME: ${SERVER_NAME:-localhost}, php:80
         ports:
           - "8001:80"
+          - "2200:22"
         volumes:
           - '.:/var/www/html:cached'
           - '/var/www/html/vendor'
