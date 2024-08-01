@@ -8,6 +8,11 @@
             "Fabriman\\SymfonyDocker\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Fabriman\\SymfonyDocker\\Tests\\": "test/"
+        }
+    },
     "bin": [
         "bin/fm"
     ],
