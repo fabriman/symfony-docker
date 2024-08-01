@@ -91,7 +91,7 @@ RUN apt update  \
     && apt install -y openssh-server \
     && echo 'root:rootpsw' | chpasswd  \
     && sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
-    && sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config \
+    && sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 
 RUN ln -s /etc/nginx/sites-available/server /etc/nginx/sites-enabled
 
