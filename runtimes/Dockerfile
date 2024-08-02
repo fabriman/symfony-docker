@@ -1,3 +1,4 @@
+#syntax=docker/dockerfile:1.7-labs
 FROM ubuntu:22.04
 
 WORKDIR /var/www/html
@@ -98,5 +99,6 @@ RUN ln -s /etc/nginx/sites-available/server /etc/nginx/sites-enabled
 RUN service ssh start
 RUN service php8.2-fpm start
 
-ADD server.conf /etc/nginx/sites-available/server
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD ./vendor/fabriman/symfony-docker/runtimes/server.conf /etc/nginx/sites-available/server
+ADD ./vendor/fabriman/symfony-docker/runtimes/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD --exclude=var --exclude=vendor --exclude=node_modules . /var/www/html
