@@ -26,12 +26,20 @@ For the full list, please check the Dockerfile
           SERVER_NAME: ${SERVER_NAME:-localhost}, php:80
         ports:
           - "8001:80"
-          - "2200:22"
+          - "2201:22"
+        # --------------------------------------
+        # Avoid volumes if you are using windows (use ssh coonnection transfer as much faster)
+        # Connection for ssh is:
+        # host: localhost
+        # port: 2201
+        # login: root
+        # password: rootpsw
         volumes:
           - '.:/var/www/html:cached'
           - '/var/www/html/vendor'
           - '/var/www/html/var'
           - '/var/www/html/node_modules'
+        # --------------------------------------
         links:
           - database
       
@@ -84,9 +92,6 @@ We have provided a shell script to automate the setup process. Follow the steps 
    # Run the bootstrap
     $ fm up:build
     ```
-
-## Default Settings
-Default settings inside docker-compose file, like ports and container's name have to stay as they are to avoid conflicts during pushes.
 
 ## Access Project
 #### Website
