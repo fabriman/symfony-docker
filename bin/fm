@@ -39,8 +39,10 @@ function display_help {
     echo
     echo "${YELLOW}Symfony Specific Commands:${NC}"
     echo "  ${GREEN}fm migrations${NC}        Exectute both make:migration and doctrine:migrations:migrate"
-    echo "  ${GREEN}fm cache:clear${NC}        Cleare the cache"
-
+    echo "  ${GREEN}fm cache:clear${NC}        Clear the cache"
+    echo
+    echo
+    echo
     exit 1
 }
 
