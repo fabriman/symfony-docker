@@ -41,16 +41,9 @@ function display_help {
 }
 
 # Proxy the "help" command...
-if [ $# -gt 0 ]; then
-    if [ "$1" == "help" ] || [ "$1" == "-h" ] || [ "$1" == "-help" ] || [ "$1" == "--help" ]; then
-        display_help
-    fi
-else
-#    display_help
-    echo 'display_help';
-fi
-
-if [ $1 == "composer" ]; then
+if [ "$1" == "help" ] || [ "$1" == "-h" ] || [ "$1" == "-help" ] || [ "$1" == "--help" ]; then
+    display_help
+elif [ $1 == "composer" ]; then
   docker exec -it $SERVER_CONTAINER composer ${*:2}
 elif [ $1 = "npm" ]; then
   docker exec -it $SERVER_CONTAINER npm ${*:2}
