@@ -60,7 +60,7 @@ elif [ "$1" = "php" ]; then
 elif [ "$1" == "symfony" ]; then
   docker exec -it $SERVER_CONTAINER php bin/console  ${*:2}
 elif [ "$1" == "cache:clear" ] || [ "$1" == "c:c" ]; then
-  docker exec -it $SERVER_CONTAINER php bin/console  ${*:2}
+  docker exec -it $SERVER_CONTAINER php bin/console c:c${*:2}
 elif [ "$1" == "migrations" ]; then
   docker exec -it $SERVER_CONTAINER php bin/console --no-interaction ma:mi
   docker exec -it $SERVER_CONTAINER php bin/console d:m:m  --allow-no-migration
