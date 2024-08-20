@@ -36,6 +36,10 @@ function display_help {
     echo "${YELLOW}Symfony Commands:${NC}"
     echo "  ${GREEN}fm symfony ...${NC}        Run a Symfony command"
     echo "  ${GREEN}fm symfony make:migration${NC}"
+    echo
+    echo "${YELLOW}Symfony Specific Commands:${NC}"
+    echo "  ${GREEN}fm migrations${NC}        Exectute both make:migration and doctrine:migrations:migrate"
+    echo "  ${GREEN}fm cache:clear${NC}        Cleare the cache"
 
     exit 1
 }
@@ -43,18 +47,23 @@ function display_help {
 # Proxy the "help" command...
 if [ "$1" == "help" ] || [ "$1" == "-h" ] || [ "$1" == "-help" ] || [ "$1" == "--help" ]; then
     display_help
-elif [ $1 == "composer" ]; then
+elif [ "$1" == "composer" ]; then
   docker exec -it $SERVER_CONTAINER composer ${*:2}
-elif [ $1 = "npm" ]; then
+elif [ "$1" = "npm" ]; then
   docker exec -it $SERVER_CONTAINER npm ${*:2}
-elif [ $1 = "yarn" ]; then
+elif [ "$1" = "yarn" ]; then
   docker exec -it $SERVER_CONTAINER yarn ${*:2}
-elif [ $1 = "php" ]; then
+elif [ "$1" = "php" ]; then
   docker exec -it $SERVER_CONTAINER php ${*:2}
-elif [ $1 == "symfony" ]; then
+elif [ "$1" == "symfony" ]; then
   docker exec -it $SERVER_CONTAINER php bin/console  ${*:2}
-elif [ $1 == "up:build" ]; then
+elif [ "$1" == "cache:clear" ] || [ "$1" == "c:c" ]; then
+  docker exec -it $SERVER_CONTAINER php bin/console  ${*:2}
+elif [ "$1" == "migrations" ]; then
+  docker exec -it $SERVER_CONTAINER php bin/console --no-interaction ma:mi
+  docker exec -it $SERVER_CONTAINER php bin/console d:m:m  --allow-no-migration
+elif [ "$1" == "up:build" ]; then
   vendor/fabriman/symfony-docker/runtimes/bootstrap
 else
-  echo "No command found for $* ! --help for some hints"
+  display_help
 fi
