@@ -28,7 +28,7 @@ For the full list, please check the Dockerfile
           - "8001:80"
           - "2201:22"
         # --------------------------------------
-        # Avoid volumes if you are using windows (use ssh coonnection transfer as much faster)
+        # Avoid volumes if you are using windows (use ssh connection transfer instead)
         # Connection for ssh is:
         # host: localhost
         # port: 2201
